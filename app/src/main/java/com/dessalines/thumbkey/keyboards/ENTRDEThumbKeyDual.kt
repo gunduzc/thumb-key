@@ -91,6 +91,9 @@ private class DeadKeyCycleProcessor : TextProcessor {
     override fun updateCursorPosition(ime: IMEService) {}
 }
 
+// Blanks the whole board, letters, symbols, digits and icons, and brings it back.
+private val TOGGLE_HIDE_ALL_KEYC = TOGGLE_HIDE_LETTERS_KEYC.copy(action = ToggleHideAll)
+
 private val DEAD_KEY_DUAL =
     KeyC(
         display = KeyDisplay.TextDisplay("⟳"),
@@ -195,7 +198,7 @@ private fun letterRows(upper: Boolean): List<List<KeyItemC>> {
             ),
             KeyItemC(
                 center = big("r"),
-                topLeft = TOGGLE_HIDE_LETTERS_KEYC,
+                topLeft = TOGGLE_HIDE_ALL_KEYC,
                 top = GOTO_SETTINGS_KEYC,
                 topRight = SWITCH_IME_KEYC,
                 left = SWITCH_LANGUAGE_KEYC,
