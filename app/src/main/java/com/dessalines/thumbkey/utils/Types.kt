@@ -278,6 +278,8 @@ sealed class KeyAction {
 
     data object ToggleHideLetters : KeyAction()
 
+    data object ToggleHideAll : KeyAction()
+
     data object SelectAll : KeyAction()
 
     data object Cut : KeyAction()

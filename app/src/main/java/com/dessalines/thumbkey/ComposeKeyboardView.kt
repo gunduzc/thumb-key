@@ -98,6 +98,16 @@ class ComposeKeyboardView(
                             }
                         }
                     },
+                    onToggleHideAll = {
+                        ctx.lifecycleScope.launch {
+                            val state = settingsState.value
+                            state?.let { s ->
+                                val hideAll = !(s.hideLetters.toBool() && s.hideSymbols.toBool())
+                                val s2 = s.copy(hideLetters = hideAll.toInt(), hideSymbols = hideAll.toInt())
+                                settingsRepo.update(s2)
+                            }
+                        }
+                    },
                     onGoToClipboardSettings = {
                         val intent =
                             Intent(context, MainActivity::class.java).apply {

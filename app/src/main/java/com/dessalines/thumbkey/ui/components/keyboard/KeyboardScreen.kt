@@ -105,6 +105,7 @@ fun KeyboardScreen(
     onSwitchLanguage: () -> Unit,
     onChangePosition: ((old: KeyboardPosition) -> KeyboardPosition) -> Unit,
     onToggleHideLetters: () -> Unit,
+    onToggleHideAll: () -> Unit,
     onGoToClipboardSettings: () -> Unit,
 ) {
     val ctx = LocalContext.current as IMEService
@@ -421,6 +422,7 @@ fun KeyboardScreen(
                                         }
                                     },
                                     onToggleHideLetters = onToggleHideLetters,
+                                    onToggleHideAll = onToggleHideAll,
                                     onAutoCapitalize = { enable ->
                                         if (mode !== KeyboardMode.NUMERIC) {
                                             if (enable) {
@@ -619,6 +621,7 @@ fun KeyboardScreen(
                                         }
                                     },
                                     onToggleHideLetters = onToggleHideLetters,
+                                    onToggleHideAll = onToggleHideAll,
                                     onAutoCapitalize = { enable ->
                                         if (mode !== KeyboardMode.NUMERIC) {
                                             if (enable) {
@@ -919,6 +922,7 @@ fun KeyboardScreen(
                                             }
                                         },
                                         onToggleHideLetters = onToggleHideLetters,
+                                        onToggleHideAll = onToggleHideAll,
                                         onKeyEvent = { action ->
                                             when (mode) {
                                                 KeyboardMode.CTRLED, KeyboardMode.ALTED -> {

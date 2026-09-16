@@ -345,6 +345,7 @@ fun performKeyAction(
     onToggleClipboardMode: (enable: Boolean) -> Unit,
     onToggleCapsLock: () -> Unit,
     onToggleHideLetters: () -> Unit,
+    onToggleHideAll: () -> Unit,
     onAutoCapitalize: (enable: Boolean) -> Unit,
     onSwitchLanguage: () -> Unit,
     onChangePosition: ((old: KeyboardPosition) -> KeyboardPosition) -> Unit,
@@ -1311,6 +1312,11 @@ fun performKeyAction(
         KeyAction.ToggleHideLetters -> {
             Log.d(TAG, "Toggling Hide letters")
             onToggleHideLetters()
+        }
+
+        KeyAction.ToggleHideAll -> {
+            Log.d(TAG, "Toggling Hide all")
+            onToggleHideAll()
         }
 
         is KeyAction.ShiftAndCapsLock -> {

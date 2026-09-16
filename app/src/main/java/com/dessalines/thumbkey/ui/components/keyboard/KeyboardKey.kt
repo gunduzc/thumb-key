@@ -139,6 +139,7 @@ fun KeyboardKey(
     onToggleClipboardMode: (enable: Boolean) -> Unit,
     onToggleCapsLock: () -> Unit,
     onToggleHideLetters: () -> Unit,
+    onToggleHideAll: () -> Unit,
     onAutoCapitalize: (enable: Boolean) -> Unit,
     onSwitchLanguage: () -> Unit,
     onChangePosition: ((old: KeyboardPosition) -> KeyboardPosition) -> Unit,
@@ -424,6 +425,7 @@ fun KeyboardKey(
                         onToggleClipboardMode = onToggleClipboardMode,
                         onToggleCapsLock = onToggleCapsLock,
                         onToggleHideLetters = onToggleHideLetters,
+                        onToggleHideAll = onToggleHideAll,
                         onAutoCapitalize = onAutoCapitalize,
                         onSwitchLanguage = onSwitchLanguage,
                         onChangePosition = onChangePosition,
@@ -446,6 +448,7 @@ fun KeyboardKey(
                             onToggleClipboardMode = onToggleClipboardMode,
                             onToggleCapsLock = onToggleCapsLock,
                             onToggleHideLetters = onToggleHideLetters,
+                            onToggleHideAll = onToggleHideAll,
                             onAutoCapitalize = onAutoCapitalize,
                             onSwitchLanguage = onSwitchLanguage,
                             onChangePosition = onChangePosition,
@@ -743,6 +746,7 @@ fun KeyboardKey(
                                 onToggleClipboardMode = onToggleClipboardMode,
                                 onToggleCapsLock = onToggleCapsLock,
                                 onToggleHideLetters = onToggleHideLetters,
+                                onToggleHideAll = onToggleHideAll,
                                 onAutoCapitalize = onAutoCapitalize,
                                 onSwitchLanguage = onSwitchLanguage,
                                 onChangePosition = onChangePosition,
@@ -781,6 +785,7 @@ fun KeyboardKey(
                                         onToggleClipboardMode = onToggleClipboardMode,
                                         onToggleCapsLock = onToggleCapsLock,
                                         onToggleHideLetters = onToggleHideLetters,
+                                        onToggleHideAll = onToggleHideAll,
                                         onAutoCapitalize = onAutoCapitalize,
                                         onSwitchLanguage = onSwitchLanguage,
                                         onChangePosition = onChangePosition,
@@ -1056,14 +1061,19 @@ fun KeyText(
             key.display
         }
 
+    // Both hide settings on together means a blank board: no icons or numbers either.
+    val hideAll = hideLetters && hideSymbols
+
     when (display) {
         is KeyDisplay.IconDisplay -> {
-            Icon(
-                imageVector = display.icon,
-                contentDescription = display.icon.name,
-                tint = color,
-                modifier = Modifier.size(fontSize),
-            )
+            if (!hideAll) {
+                Icon(
+                    imageVector = display.icon,
+                    contentDescription = display.icon.name,
+                    tint = color,
+                    modifier = Modifier.size(fontSize),
+                )
+            }
         }
 
         is KeyDisplay.TextDisplay -> {
@@ -1073,7 +1083,9 @@ fun KeyText(
 
             // If its a letter key, use the hide letter setting
             val hideKey =
-                if (containsLetters) {
+                if (hideAll) {
+                    true
+                } else if (containsLetters) {
                     hideLetters
                 } else {
                     if (containsNumbers) {
