@@ -104,6 +104,7 @@ import com.dessalines.thumbkey.keyboards.KB_EN_THUMBKEY_WORDS_SHIFT
 import com.dessalines.thumbkey.keyboards.KB_EN_THUMBKEY_WORDS_SYMBOLS
 import com.dessalines.thumbkey.keyboards.KB_EN_THUMBKEY_WORDS_SYMBOLS_DUAL
 import com.dessalines.thumbkey.keyboards.KB_EN_THUMBKEY_WRITER
+import com.dessalines.thumbkey.keyboards.KB_EN_TR_DE_THUMBKEY_DUAL
 import com.dessalines.thumbkey.keyboards.KB_EN_TWO_HANDS
 import com.dessalines.thumbkey.keyboards.KB_EN_TYPESPLIT
 import com.dessalines.thumbkey.keyboards.KB_EN_TYPESPLIT_PROGRAMMING
@@ -490,4 +491,5 @@ enum class KeyboardLayout(
     TOKThumbKeyLettersShift(KB_TOK_THUMBKEY_LETTERS_SHIFT), // toki pona thumb-key letters shift
     CZTypeSplit(KB_CZ_TYPESPLIT_FULL), // čeština type-split
     ENMessagEaseComposeCombo(KB_EN_MESSAGEASE_COMPOSE_COMBO), // english messagease compose combo
+    ENTRDEThumbKeyDual(KB_EN_TR_DE_THUMBKEY_DUAL), // english türkçe deutsch thumb-key dual
 }
