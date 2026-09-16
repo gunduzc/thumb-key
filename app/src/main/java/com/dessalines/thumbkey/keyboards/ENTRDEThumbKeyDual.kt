@@ -24,8 +24,8 @@ import com.dessalines.thumbkey.utils.SwipeNWay.*
 // in place of the letters, plus F1 to F12 and insert on the h and i keys.
 //
 // Turkish and German letters come from one dead key (⟳) that cycles the letter before the cursor
-// through its variants: s ş ß, c ç, g ğ, i ı, I İ, a ä, o ö, u ü, and back. ı also sits on a plain
-// swipe of i. The dead key is implemented by the layout's own text processor below.
+// through its variants: s ş ß, c ç, g ğ, i ı, I İ, a ä, o ö, u ü, and back. The dead key is
+// implemented by the layout's own text processor below.
 //
 // Ctrl and alt each switch to a grid generated from the main one, where every plain character
 // becomes the matching key event with the modifier flag, so ctrl+c, ctrl+r, alt+. and friends
@@ -276,7 +276,6 @@ private fun letterRows(upper: Boolean): List<List<KeyItemC>> {
                 bottomRight = sym("-"),
                 bottom = sym("."),
                 bottomLeft = sym("*"),
-                left = KeyC(if (upper) "İ" else "ı"),
                 longPress = CommitText("8"),
             ),
             KeyItemC(
@@ -331,7 +330,6 @@ private val KB_EN_TR_DE_THUMBKEY_DUAL_NUMERIC =
                             right = fkey(11),
                             bottom = sendKey(KeyEvent.KEYCODE_INSERT, "ins"),
                             bottomRight = fkey(12),
-                            left = null,
                             longPress = null,
                         )
                     }
